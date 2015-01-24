@@ -8,17 +8,23 @@
 
 
 	<body>
-	<input ng-model='text'><br>
-	<input ng-model='author'><br>
-		<button ng-click='add()'>Add Quote</button>
+
+
+
+
+	<input type='text' placeholder='quote' ng-model='text'><br>
+	<input type='text' placeholder='author' ng-model='author'><br>
+		<button ng-click='add()' ng-show='addQuote'>Add Quote</button>
+
 	<input type="text" placeholder="Remove Quote" ng-model= 'searchTerm'>
-		<button  ng-click='remove()'>Remove Quote</button>
-	<input type="text" placeholder="Filter" ng-model= 'searchTerm1'>
-		<button  ng-click='filter(searchTerm1)'>Filter Quote</button>
+		<button  ng-click='remove()' ng-show='removeMe'>Remove Quote</button>
+
+	<input type="text" placeholder="Filter" ng-model='searchTerm1'>
+		<button  ng-click='filter(searchTerm1)' ng-show'filters'>Filter Quote</button>
 
 
 
-	<div ng-repeat='words in quotes'>
+	<div ng-repeat='words in quotes|filter: searchTerm1'>
 		<li>
 		{{words.text}}
 		</li>

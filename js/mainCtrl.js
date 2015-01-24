@@ -7,17 +7,41 @@ app.controller('mainCtrl', function($scope, dataService) {
 	// 	$scope.quotes = dataService.getdata();
 	// }
 	// $scope.getquotes();
+	
 	$scope.add = function() {
-		dataService.addData($scope.text, $scope.author);
+		(dataService.addData($scope.text, $scope.author)) 
+		$scope.text = '';
+		$scope.author = '';
 	}
 	
 
 	$scope.remove = function() {
 		dataService.removeData($scope.searchTerm);
+		$scope.searchTerm = '';
+	}
+
+	$scope.showAdd = function() {
+		$scope.addedQuote = !$scope.addedQuote;
+		$scope.deletedQuote = false;
+		$scope.filters = false;
 
 	}
-	//i dont think i need the filter
-	// $scope.filter = function() {
 
-	// }
+	$scope.showDelete = function() {
+		$scope.addedQuote = false;
+		$scope.deletedQuote = !$scope.deletedQuote;
+		$scope.filters = false;
+
+	}
+
+	$scope.showfilter = function() {
+		$scope.addedQuote = false;
+		$scope.deletedQuote = false;
+		$scope.filterQuote = !$scope.filterQuote;
+
+	}
+
+
+
+	
 })
